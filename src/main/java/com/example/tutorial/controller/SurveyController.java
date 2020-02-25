@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,9 +64,20 @@ public class SurveyController {
 	  @DeleteMapping("/surveys/delete/{questionId}")
 	  @ResponseBody 
 	  public String deleteQuestion(@PathVariable String questionId) {
-	  surveyService.deleteQuestion(questionId);
-	  return"Successfully deleted"; 
+		  
+		  surveyService.deleteQuestion(questionId);
+		  return"Successfully deleted"; 
 	  }
 	 
+	  @PutMapping("/surveys/{surveyId}/put/{questionId}")
+	  @ResponseBody 
+	  public String putQuestion(@PathVariable String surveyId, @RequestBody Question newQuestion) {
+		  Question question = surveyService.retrieveQuestion(surveyId, newQuestion.getId());
+		  if(question == null) {
+			  return "no question found";
+		  }
+		  surveyService.updateQuestion(newQuestion);
+		  return"Successfully updated"; 
+	  }
 
 }
