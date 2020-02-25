@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.example.tutorial")
-@EntityScan( basePackages = {"com.example.tutorial.entity"})
-@EnableJpaRepositories(basePackages = {"com.example.tutorial.jpaRepository"})
+@EntityScan( basePackages = "com.example.tutorial.entity")
+@EnableJpaRepositories(basePackages = "com.example.tutorial.jpaRepository")
 public class RestapiApplication {
 
 	public static void main(String[] args) {

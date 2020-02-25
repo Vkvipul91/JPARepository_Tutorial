@@ -2,11 +2,59 @@ package com.example.tutorial.entity;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
 public class Question {
+	
+
 	private String id;
 	private String description;
 	private String correctAnswer;
 	private List<String> options;
+	
+
+	 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getCorrectAnswer() {
+		return correctAnswer;
+	}
+
+	public void setCorrectAnswer(String correctAnswer) {
+		this.correctAnswer = correctAnswer;
+	}
+
+	public List<String> getOptions() {
+		return options;
+	}
+
+	public void setOptions(List<String> options) {
+		this.options = options;
+	}
+
 
 	// Needed by Caused by: com.fasterxml.jackson.databind.JsonMappingException:
 	// Can not construct instance of com.in28minutes.springboot.model.Question:
@@ -26,25 +74,7 @@ public class Question {
 		this.options = options;
 	}
 
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public String getCorrectAnswer() {
-		return correctAnswer;
-	}
-
-	public List<String> getOptions() {
-		return options;
-	}
 
 	@Override
 	public String toString() {

@@ -1,10 +1,12 @@
 package com.example.tutorial.controller;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,8 @@ import com.example.tutorial.service.SurveyService;
 
 @RestController
 public class SurveyController {
+	
+	
 	@Autowired
 	private SurveyService surveyService;
 
@@ -55,6 +59,13 @@ public class SurveyController {
 		return ResponseEntity.created(location).build();
 	}
 
-
+	
+	  @DeleteMapping("/surveys/delete/{questionId}")
+	  @ResponseBody 
+	  public String deleteQuestion(@PathVariable String questionId) {
+	  surveyService.deleteQuestion(questionId);
+	  return"Successfully deleted"; 
+	  }
+	 
 
 }

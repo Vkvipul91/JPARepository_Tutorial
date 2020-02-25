@@ -4,17 +4,21 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.example.tutorial.entity.Question;
 import com.example.tutorial.entity.Survey;
 
-@Component
+
+@Service
 public class SurveyService {
 
 	private static List<Survey> surveys = new ArrayList<>();
+	private static List<Question> questions = new ArrayList<Question>();
 	static {
 		Question question1 = new Question("Question1",
 				"Largest Country in the World", "Russia", Arrays.asList(
@@ -29,7 +33,7 @@ public class SurveyService {
 				"Second largest english speaking country", "India", Arrays
 						.asList("India", "Russia", "United States", "China"));
 
-		List<Question> questions = new ArrayList<>(Arrays.asList(question1,
+		 questions = new ArrayList<>(Arrays.asList(question1,
 				question2, question3, question4));
 
 		Survey survey = new Survey("Survey1", "My Favorite Survey",
@@ -93,4 +97,14 @@ public class SurveyService {
 
 		return question;
 	}
+	
+	   public void deleteQuestion(String id) {
+	        Iterator<Question> iterator = questions.iterator();
+	        while (iterator.hasNext()) {
+	        	Question ques = iterator.next();
+	            if (ques.getId().equals(id)) {
+	                iterator.remove();
+	            }
+	        }
+	    }
 }

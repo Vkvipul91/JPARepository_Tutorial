@@ -1,5 +1,6 @@
 package com.example.tutorial.main;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import com.example.tutorial.entity.Question;
 import com.example.tutorial.entity.User;
 import com.example.tutorial.jpaRepository.UserRepository;
 
@@ -22,7 +24,6 @@ public class UserRepositoryApplicationRunner implements ApplicationRunner {
 	
 	 @Autowired 
 	 private UserRepository userRepo;
-	 
 	
 	
 	@Override
@@ -37,8 +38,6 @@ public class UserRepositoryApplicationRunner implements ApplicationRunner {
 		
 		List<User> userList = userRepo.findAll();
 		log.info("User details :"+userList);
-		
-	
 		
 		
 	}
